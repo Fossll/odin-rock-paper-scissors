@@ -15,12 +15,12 @@ function getComputerChoice() {
 }
 
 
-while (playerSelection !=='rock' && playerSelection !=='paper' && playerSelection !=='scissors'){
-    playerSelection = prompt('Enter Input (Rock, Paper or Scissors): ').toLowerCase();
-}
-
-
 function playRound(playerSelection, computerSelection) {
+
+    while (playerSelection !=='rock' && playerSelection !=='paper' && playerSelection !=='scissors'){
+        playerSelection = prompt('Enter Input (Rock, Paper or Scissors): ').toLowerCase();
+    }
+
     computerSelection = getComputerChoice();
     console.log('Player Selection', playerSelection);
     console.log('Computer Selection', computerSelection);
@@ -47,20 +47,19 @@ function playRound(playerSelection, computerSelection) {
     }
     
     console.log(`At the end of the round, your score is ${playerScore}, and the computer score is ${computerScore}.`)
-    
+    return roundResult;
 }
 
 
-
-console.log(playRound(playerSelection, computerSelection));
 
 function game() {
- for (let i = 0; i < 5; i++) {
-    playRound();
- }
+    for (let i = 1; i <= 5; i++) {
+      console.log(`Round ${i}:`);
+      let result = playRound(playerSelection, computerSelection);
+      console.log(result);
+    }
+    console.log(`Final score: Player ${playerScore}, Computer ${computerScore}`);
+  }
+  
+  game();
 
-}
-
-function gameOver() {
-    return playerScore === 5 || computerScore === 5
-}
